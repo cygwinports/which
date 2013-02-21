@@ -1,7 +1,0 @@
-DESCRIPTION="Prints out full path of executables"
-HOMEPAGE="http://www.xs4all.nl/~carlo17/which/"
-SRC_URI="http://www.xs4all.nl/~carlo17/which/${P}.tar.gz"
-
-DOCS='README.alias'
-
-DIFF_EXCLUDES='-x mdate-sh'
