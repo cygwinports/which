@@ -9,4 +9,6 @@ shell prompt. It uses the exact same algorithm as bash."
 HOMEPAGE="http://www.xs4all.nl/~carlo17/which/"
 SRC_URI="http://www.xs4all.nl/~carlo17/which/${P}.tar.gz"
 
+WANT_AUTOMAKE=1.11
+
 DOCS='README.alias'
