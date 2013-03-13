@@ -1,0 +1,48 @@
+--- origsrc/which-2.20/bash.c	2008-01-18 10:07:02.000000000 -0800
++++ src/which-2.20/bash.c	2008-12-26 13:26:12.331500000 -0800
+@@ -251,7 +251,7 @@
+ 
+   r = FS_EXISTS;
+ 
+-#if defined (AFS)
++#if defined (AFS) || __CYGWIN__
+   /* We have to use access(2) to determine access because AFS does not
+      support Unix file system semantics.  This may produce wrong
+      answers for non-AFS files when ruid != euid.  I hate AFS. */
+--- origsrc/which-2.20/which.c	2008-01-18 10:07:02.000000000 -0800
++++ src/which-2.20/which.c	2008-12-26 13:26:12.347125000 -0800
+@@ -22,6 +22,7 @@
+ #include "getopt.h"
+ #include "tilde/tilde.h"
+ #include "bash.h"
++#include <limits.h>
+ 
+ static const char *progname;
+ 
+@@ -63,7 +64,7 @@
+   fprintf(stderr, "%s: no %s in (%s)\n", progname, name, path_list);
+ }
+ 
+-static char home[256];
++static char home[PATH_MAX];
+ static size_t homelen = 0;
+ 
+ static int absolute_path_given;
+@@ -162,7 +163,7 @@
+   return (found);
+ }
+ 
+-static char cwd[256];
++static char cwd[PATH_MAX];
+ static size_t cwdlen;
+ 
+ static void get_current_working_directory(void)
+@@ -194,7 +195,7 @@
+ 
+ static char *path_clean_up(const char *path)
+ {
+-  static char result[256];
++  static char result[PATH_MAX];
+ 
+   const char *p1 = path;
+   char *p2 = result;

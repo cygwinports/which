@@ -1,13 +1,14 @@
 NAME="which"
 VERSION=2.20
-RELEASE=1
-CATEGORY="Utils"
+RELEASE=2
+CATEGORY="Base"
 SUMMARY="Prints out full path of execuatbles"
 DESCRIPTION="GNU Which prints out the full path of the executables that bash(1)
 would execute when the passed program names would have been entered on the
 shell prompt. It uses the exact same algorithm as bash."
 HOMEPAGE="http://www.xs4all.nl/~carlo17/which/"
 SRC_URI="http://www.xs4all.nl/~carlo17/which/${P}.tar.gz"
+PATCH_URI="2.20-cygwin.patch"
 
 WANT_AUTOMAKE=1.11
 
